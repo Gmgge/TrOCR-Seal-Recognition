@@ -1,7 +1,10 @@
 import os
+import torch
+import json
 from PIL import Image
 from torch.utils.data import Dataset
-import torch
+
+
 class trocrDataset(Dataset):
     """
     trocr 训练数据集处理

@@ -44,7 +44,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     processor = TrOCRProcessor.from_pretrained(args.pretrain_model)
-    pre_model = VisionEncoderDecoderModel.from_pretrained(args.pretrain_model)
+    pre_model = VisionEncoderDecoderModel.from_pretrained(args.pretrain_model, ignore_mismatched_sizes=False)
 
     pre_vocab = processor.tokenizer.get_vocab()
 
