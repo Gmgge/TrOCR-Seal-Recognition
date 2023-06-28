@@ -8,6 +8,8 @@ from transformers import default_data_collator
 from sklearn.model_selection import train_test_split
 from transformers import Seq2SeqTrainer, Seq2SeqTrainingArguments
 from datasets import load_metric
+from file_tool import get_image_file_list
+
 
 def compute_metrics(pred):
     """
@@ -29,12 +31,13 @@ def compute_metrics(pred):
 
     return {"cer": cer, "acc": acc}
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='trocr fine-tune训练')
     parser.add_argument('--cust_data_init_weights_path', default='./cust-data/weights', type=str,
                         help="初始化训练权重，用于自己数据集上fine-tune权重")
     parser.add_argument('--checkpoint_path', default='./checkpoint/trocr', type=str, help="训练模型保存地址")
-    parser.add_argument('--dataset_path', default='./dataset/cust-data/*/*.jpg', type=str, help="训练数据集")
+    parser.add_argument('--dataset_path', default='./dataset/cust-data/', type=str, help="训练数据集")
     parser.add_argument('--per_device_train_batch_size', default=32, type=int, help="train batch size")
     parser.add_argument('--per_device_eval_batch_size', default=8, type=int, help="eval batch size")
     parser.add_argument('--max_target_length', default=128, type=int, help="训练文字字符数")
@@ -50,7 +53,8 @@ if __name__ == '__main__':
     print(args)
     os.environ["CUDA_VISIBLE_DEVICES"] = args.CUDA_VISIBLE_DEVICES
     print("loading data .................")
-    paths = glob(args.dataset_path)
+    paths = get_image_file_list(args.dataset_path)
+    print("data count: {}".format(len(paths)))
 
     train_paths, test_paths = train_test_split(paths, test_size=0.05, random_state=10086)
     print("train num:", len(train_paths), "test num:", len(test_paths))

@@ -25,4 +25,5 @@ dataset/test.json
 dataset/train.json
 app/
 models/
+.vs/
 
