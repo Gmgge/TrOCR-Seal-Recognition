@@ -61,7 +61,7 @@ dataset/cust-data/100/10000.txt
 #### 训练模型
 ```
 python train.py \
-       --cut_data_init_weights_path ./cust-data/weights \
+       --cust_data_init_weights_path ./cust-data/weights \
        --checkpoint_path ./checkpoint/trocr-custdata \
        --dataset_path "./dataset/cust-data/*/*.jpg" \
        --per_device_train_batch_size 8 \

@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from transformers import Seq2SeqTrainer, Seq2SeqTrainingArguments
 from datasets import load_metric
 from file_tool import get_image_file_list
+from image_aug import image_aug
 
 
 def compute_metrics(pred):
@@ -63,10 +64,10 @@ if __name__ == '__main__':
     processor = TrOCRProcessor.from_pretrained(args.cust_data_init_weights_path)
     vocab = processor.tokenizer.get_vocab()
     vocab_inp = {vocab[key]: key for key in vocab}
-    transformer = lambda x: x ##图像数据增强函数，可自定义
 
+    transformer = image_aug  # 训练集数据增强
     train_dataset = trocrDataset(paths=train_paths, processor=processor, max_target_length=args.max_target_length, transformer=transformer)
-    transformer = lambda x: x  ##图像数据增强函数
+    transformer = lambda x: x  # 验证集数据增强 通常验证不做数据增强
     eval_dataset = trocrDataset(paths=test_paths, processor=processor, max_target_length=args.max_target_length, transformer=transformer)
 
     model = VisionEncoderDecoderModel.from_pretrained(args.cust_data_init_weights_path)
