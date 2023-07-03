@@ -1,16 +1,11 @@
-"""
-python -m \
-    transformers.onnx \
-    --model=hand-write \
-    --feature=vision2seq-lm \
-    hand-write --atol 1e-4
-"""
 import cv2
 import numpy as np
 import onnxruntime
 import json
 import os
 import argparse
+
+
 def read_vocab(path):
     """
     加载词典
