@@ -1,5 +1,7 @@
 # 基于trocr(beit+roberta)实现对中文场景文字识别
-trocr原地址(https://github.com/microsoft/unilm/tree/master/trocr)
+## 参考项目
+[trocr项目](https://github.com/microsoft/unilm/tree/master/trocr)<br>
+[trocr-chinese项目](https://github.com/chineseocr/trocr-chinese)
 ## 实现功能
 - [x]  单行/多行文字/横竖排文字识别
 - [x]  不规则文字（印章，公式等）
