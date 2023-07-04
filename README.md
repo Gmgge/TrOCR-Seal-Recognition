@@ -4,9 +4,8 @@ trocr原地址(https://github.com/microsoft/unilm/tree/master/trocr)
 - [x]  单行/多行文字/横竖排文字识别
 - [x]  不规则文字（印章，公式等）
 - [x]  转 onnx模型
-- [ ]  表格识别
-- [ ]  模型蒸馏/DML(协作学习)
-- [ ]  Prompt Learning
+- [x]  发布标准公章端到端识别onnx模型
+
 
 ## 环境编译
 ```
@@ -28,7 +27,7 @@ c
 ```
 ```[python]
 python gen_vocab.py \
-       --dataset_path "dataset/cust-data/0/*.txt" \
+       --dataset_path "dataset/cust-data/0/" \
        --cust_vocab ./cust-data/vocab.txt
 
 ```
@@ -63,7 +62,7 @@ dataset/cust-data/100/10000.txt
 python train.py \
        --cust_data_init_weights_path ./cust-data/weights \
        --checkpoint_path ./checkpoint/trocr-custdata \
-       --dataset_path "./dataset/cust-data/*/*.jpg" \
+       --dataset_path "./dataset/cust-data/" \
        --per_device_train_batch_size 8 \
        --CUDA_VISIBLE_DEVICES 1
 ```
@@ -73,7 +72,7 @@ python train.py \
 
 ```[python]
 python eval.py \
-    --dataset_path "./data/cust-data/test/*/*.jpg" \
+    --dataset_path "./data/cust-data/test/" \
     --cust_data_init_weights_path ./cust-data/weights    
 ```
 
