@@ -4,6 +4,8 @@ import onnxruntime
 import json
 import os
 import argparse
+import statistics
+from scipy.special import softmax
 
 
 def read_vocab(path):
@@ -73,6 +75,8 @@ class onnxEncoderDecoder():
         self.decoder = OnnxDecoder(os.path.join(model_path, "decoder_model.onnx"))
         self.vocab = read_vocab(os.path.join(model_path, "vocab.json"))
         self.vocab_inp = {self.vocab[key]: key for key in self.vocab}
+        self.threshold = 0.88  # 置信度阈值，由于为进行负样本训练，该阈值较高
+        self.max_len = 50  # 最长文本长度
 
     def run(self, image):
         """
@@ -85,7 +89,8 @@ class onnxEncoderDecoder():
         encoder_output = self.encoder(pixel_values)
         ids = [self.vocab["<s>"], ]
         mask = [1, ]
-        for i in range(100):
+        scores = []
+        for i in range(self.max_len):
             input_ids = np.array([ids])
             attention_mask = np.array([mask])
             decoder_output = self.decoder(input_ids=input_ids,
@@ -93,13 +98,17 @@ class onnxEncoderDecoder():
                                      attention_mask=attention_mask
                                      )
             pred = decoder_output[0][0]
-            pred = pred.argmax(axis=1)
+            pred = softmax(pred, axis=1)
+            max_index = pred.argmax(axis=1)
             if pred[-1] == self.vocab["</s>"]:
                 break
             ids.append(pred[-1])
+            scores.append(pred[max_index.shape[0]-1, max_index[-1]])
             mask.append(1)
-
-        text = decode_text(ids, self.vocab, self.vocab_inp)
+        if self.threshold >  statistics.mean(scores):
+            text = decode_text(ids, self.vocab, self.vocab_inp)
+        else: 
+            text = ""
         return text
 
 if __name__ == '__main__':
