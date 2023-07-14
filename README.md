@@ -1,4 +1,4 @@
-# 基于trocr(beit+roberta)实现对中文场景文字识别
+# 基于参考项目的公章端到端识别
 ## 参考项目
 [trocr项目](https://github.com/microsoft/unilm/tree/master/trocr)<br>
 [trocr-chinese项目](https://github.com/chineseocr/trocr-chinese)
