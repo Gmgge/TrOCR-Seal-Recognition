@@ -112,11 +112,11 @@ python onnx_test.py --model hand-write-onnx --test_img ./img/hand.png
 
 备注:后续所有模型会开源在这个目录下链接,可以自由下载. https://pan.baidu.com/s/1uSdWQhJPEy2CYoEULoOhRA  密码: vwi2
 ### 模型调用 
-#### 手写识别
-![image](img/hand.png)
+#### 公章识别
+![image](img/seal_0.png)
 ```
-unzip hand-write.zip 
-python app.py --cust_data_init_weights_path hand-write --test_img test/hand.png
+下载onnx推理模型，放入当前目录
+python onnx_test.py --model {模型目录} --test_img ./img/seal_0.png
 
 ## output: '醒我的昏迷,偿还我的天真。'
 ```
