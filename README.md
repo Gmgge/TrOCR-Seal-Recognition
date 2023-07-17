@@ -3,9 +3,11 @@
 [trocr项目](https://github.com/microsoft/unilm/tree/master/trocr)<br>
 [trocr-chinese项目](https://github.com/chineseocr/trocr-chinese)
 ## 实现功能
-- [x]  转 onnx模型
 - [x]  发布标准公章端到端识别onnx模型
-- [ ]  通用印章（圆形、椭圆、矩形、三角形），摩尔纹数据增强
+- [x]  增加置信度过滤
+- [ ]  摩尔纹增强
+- [ ]  轻量化
+- [ ]  通用印章（圆形、椭圆、矩形、三角形）
 
 欢迎提供公章数据以提升模型，任何提供有效数据的都会被认为该项目贡献者，且可以定制化模型训练或者交流训练技巧
 
