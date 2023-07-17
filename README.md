@@ -118,7 +118,10 @@ python onnx_test.py --model hand-write-onnx --test_img ./img/hand.png
 下载onnx推理模型，放入当前目录
 python onnx_test.py --model {模型目录} --test_img ./img/seal_0.png
 
-## output: '醒我的昏迷,偿还我的天真。'
+## output: '[1.0, 1.0, 1.0, 0.94803417, 0.99987036, 0.9999962, 0.99990654, 1.0, 0.9999809, 0.99999815, 1.0, 1.0, 1.0]
+0.99598354
+南京谐诚机电工程有限公司
+'
 ```
 
 ## 训练技巧
