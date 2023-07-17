@@ -110,7 +110,6 @@ python onnx_test.py --model hand-write-onnx --test_img ./img/hand.png
 | TAL_OCR_CHN(手写中文数据集)|0.0455 | 0.674（标注质量不太高,例如：test_64/552.jpg 标注值:蝶恋花, 实际值:欧阳修  ） |[TAL_OCR_CHN](https://pan.baidu.com/s/1GbyVpbiKyVN1nJipvH2fpA)  密码: 9kd8 | [TAL_OCR_CHN](https://ai.100tal.com/dataset) |0.6h(20epoch)|
 | HME100K(手写公式)|- | - |- | [HME100K](https://ai.100tal.com/dataset) |
 
-备注:后续所有模型会开源在这个目录下链接,可以自由下载. https://pan.baidu.com/s/1uSdWQhJPEy2CYoEULoOhRA  密码: vwi2
 ### 模型调用 
 #### 公章识别
 ![image](img/seal_0.png)
