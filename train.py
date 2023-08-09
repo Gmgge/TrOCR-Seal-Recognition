@@ -1,15 +1,14 @@
 import os
 import argparse
-from glob import glob
-from dataset import trocrDataset, decode_text
+from tool.dataset import trocrDataset, decode_text
 from transformers import TrOCRProcessor
 from transformers import VisionEncoderDecoderModel
 from transformers import default_data_collator
 from sklearn.model_selection import train_test_split
 from transformers import Seq2SeqTrainer, Seq2SeqTrainingArguments
 from datasets import load_metric
-from file_tool import get_image_file_list
-from image_aug import image_aug
+from tool.file_tool import get_image_file_list
+from tool.image_aug import image_aug
 
 
 def compute_metrics(pred):
@@ -60,15 +59,17 @@ if __name__ == '__main__':
     train_paths, test_paths = train_test_split(paths, test_size=0.05, random_state=10086)
     print("train num:", len(train_paths), "test num:", len(test_paths))
 
-    ##图像预处理
+    # 图像预处理
     processor = TrOCRProcessor.from_pretrained(args.cust_data_init_weights_path)
     vocab = processor.tokenizer.get_vocab()
     vocab_inp = {vocab[key]: key for key in vocab}
 
-    transformer = image_aug  # 训练集数据增强
-    train_dataset = trocrDataset(paths=train_paths, processor=processor, max_target_length=args.max_target_length, transformer=transformer)
-    transformer = lambda x: x  # 验证集数据增强 通常验证不做数据增强
-    eval_dataset = trocrDataset(paths=test_paths, processor=processor, max_target_length=args.max_target_length, transformer=transformer)
+    train_transformer = image_aug  # 训练集数据增强
+    train_dataset = trocrDataset(paths=train_paths, processor=processor, max_target_length=args.max_target_length,
+                                 transformer=train_transformer)
+    eval_transformer = lambda x: x  # 验证集数据增强 通常验证不做数据增强
+    eval_dataset = trocrDataset(paths=test_paths, processor=processor, max_target_length=args.max_target_length,
+                                transformer=eval_transformer)
 
     model = VisionEncoderDecoderModel.from_pretrained(args.cust_data_init_weights_path)
     model.config.decoder_start_token_id = processor.tokenizer.cls_token_id

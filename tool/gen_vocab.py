@@ -4,8 +4,7 @@ import argparse
 from glob import glob
 from tqdm import tqdm
 
-
-if __name__=='__main__':
+if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='trocr vocab生成')
     parser.add_argument('--cust_vocab', default="./cust-data/vocab.txt", type=str, help="自定义vocab文件生成")
     parser.add_argument('--dataset_path', default="./dataset/train/", type=str, help="自定义训练数字符集根路径")
@@ -22,9 +21,3 @@ if __name__=='__main__':
     os.makedirs(root_path, exist_ok=True)
     with open(args.cust_vocab, 'w') as f:
         f.write('\n'.join(list(vocab)))
-
-
-
-
-
-

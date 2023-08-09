@@ -1,13 +1,11 @@
 import os
 from PIL import Image
-import numpy as np
-import time
 import torch
 import argparse
 from glob import glob
 from sklearn.model_selection import train_test_split
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
-from dataset import decode_text
+from tool.dataset import decode_text
 from tqdm import tqdm
 from datasets import load_metric
 

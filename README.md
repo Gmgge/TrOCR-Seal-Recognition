@@ -30,7 +30,7 @@ b
 c
 ```
 ```[python]
-python gen_vocab.py \
+python tool/gen_vocab.py \
        --dataset_path "dataset/cust-data/0/" \
        --cust_vocab ./cust-data/vocab.txt
 
@@ -40,7 +40,7 @@ python gen_vocab.py \
 链接: https://pan.baidu.com/s/1rARdfadQlQGKGHa3de82BA  密码: 0o65.  
 google driver: https://drive.google.com/drive/folders/1ibOVCHu33asiMUaFT9FzvhFNM4z25cJY?usp=share_link  
 ```
-python init_custdata_model.py \   
+python tool/init_custdata_model.py \   
     --cust_vocab ./cust-data/vocab.txt \  
     --pretrain_model ./weights \
     --cust_data_init_weights_path ./cust-data/weights
