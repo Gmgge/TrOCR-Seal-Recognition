@@ -106,12 +106,14 @@ class OnnxEncoderDecoder(object):
             pred = decoder_output[0][0]
             pred = softmax(pred, axis=1)
             max_index = pred.argmax(axis=1)
-            if pred[-1] == self.vocab["</s>"]:
+            if max_index[-1] == self.vocab["</s>"]:
                 break
-            ids.append(pred[-1])
             scores.append(pred[max_index.shape[0] - 1, max_index[-1]])
+            ids.append(max_index[-1])
             mask.append(1)
-        if self.threshold > statistics.mean(scores):
+        print("解码单字评分：{}".format(scores))
+        print("解码平均评分：{}".format(statistics.mean(scores)))
+        if self.threshold < statistics.mean(scores):
             text = decode_text(ids, self.vocab, self.vocab_inp)
         else:
             text = ""
