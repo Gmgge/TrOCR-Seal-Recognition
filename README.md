@@ -1,4 +1,5 @@
 # 基于参考项目的公章端到端识别
+推理部署或者体验尝试，可以参考我的项目 https://github.com/Gmgge/ImageAnalysisService
 ## 参考项目
 [trocr项目](https://github.com/microsoft/unilm/tree/master/trocr)<br>
 [trocr-chinese项目](https://github.com/chineseocr/trocr-chinese)
