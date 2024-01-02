@@ -1,16 +1,26 @@
 # 基于参考项目的公章端到端识别
-推理部署或者体验尝试，可以参考我的项目 https://github.com/Gmgge/ImageAnalysisService
+推理部署或者体验尝试，可以参考我的项目 https://github.com/Gmgge/ImageAnalysisService <br>
+
+根据自测，由于真实数据缺失，对印章名（印章中水平的文字识别精度稍低，尤其倾斜或模糊的情况下），如果在体验有中任何识别错误想要提升的，欢迎反馈。
+我会定期构建优化版本。
+
 ## 参考项目
 [trocr项目](https://github.com/microsoft/unilm/tree/master/trocr)<br>
 [trocr-chinese项目](https://github.com/chineseocr/trocr-chinese)
-## 实现功能
+
+## 更新点
+1. 推出新的识别模型，见下方分享的百度云链接，请注意该模型需要将输入图像resize为(320,320)
+
+## 功能规划
 - [x]  发布标准公章端到端识别onnx模型
 - [x]  增加置信度过滤
-- [ ]  摩尔纹增强
-- [ ]  轻量化
-- [ ]  通用印章（圆形、椭圆、矩形、三角形）
+- [x]  轻量化
+- [ ]  基础印章数据集共享计划（仅含真实印章数据）
+- [ ]  更多格式的圆形印章支持
 
-欢迎提供公章数据以提升模型，任何提供有效数据的都会被认为该项目贡献者，且可以定制化模型训练或者交流训练技巧
+1. 欢迎提供公章数据以提升模型，任何提供有效数据的都会被认为该项目贡献者，且可以定制化模型训练或者交流训练技巧
+2. 任何通过审核的真实印章数据，在数据集共享计划中可以获取所有人分享的真实印章数据集
+3. 如果数据不方便分析，欢迎反馈识别错误的样例与数据模板，我会尝试生成虚拟数据
 
 ## 环境编译
 ```
@@ -106,7 +116,7 @@ python onnx_test.py --model hand-write-onnx --test_img ./img/hand.png
 | 模型        | cer(字符错误率)           | acc(文本行)  | 下载地址  |训练数据来源 |训练耗时(GPU:3090) | 
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|
 | hand-write(中文手写)      |0.011 | 0.940 |[hand-write](https://pan.baidu.com/s/19f7iu9tLHkcT_zpi3UfqLQ)  密码: punl |[数据集地址](https://aistudio.baidu.com/aistudio/datasetdetail/102884/0) |8.5h(10epoch)|
-| seal-ocr(印章识别)      |0.009 | 0.923 |[seal](https://pan.baidu.com/s/1tp-h8uAreFtQbmYT1G8hfA?pwd=cV1I)提取码：cV1I|互联网络爬取，标签由付费api识别加人工验证|
+| seal-ocr(印章识别)      |0.009 | 0.923 |[seal](https://pan.baidu.com/s/1Q0Yo50gpbgpV8IKJyToCjQ?pwd=cV1I)|互联网络爬取，标签由付费api识别加人工验证|
 | im2latex(数学公式识别)      |- | - |- |[im2latex](https://zenodo.org/record/56198#.YkniL25Bx_S) ||
 | TAL_OCR_TABLE(表格识别)     |- | - |- |[TAL_OCR_TABLE](https://ai.100tal.com/dataset) |
 | TAL_OCR_MATH(小学低年级算式数据集)|- | - |- | [TAL_OCR_MATH](https://ai.100tal.com/dataset) |
@@ -126,12 +136,8 @@ python onnx_test.py --model {模型目录} --test_img ./img/seal_0.png
 '
 ```
 
-## 训练技巧
-###### 数据集较少时，可以采用数据增强的方法构造更多的数据，理论上几十万的数据（可不做数据增强，模型预训练已经见到过足够多的数据(票据类、证件类，打印、手写、拍照等场景)），可以收敛到90%以上的准确率（CER<0.05）   
-###### 训练样本不要自己resize到384x384（后续会优化这个结构，目前预训练是384x384），保留原图即可，模型前处理processor会自动处理    
-###### 如果要训练识别多行文字，文字行之间可以加一个特殊字符标记，例如："1234\n4567\n89990"   
-###### fine-tune中英文以外的语言效果可能不太好（足够多的数据及足够steps也能收敛），因为没有在其他语言上预训练    
-###### 遇到问题先分析一下自己的数据，然后增加一些训练的技巧去优化，不要指望模型解决100%的问题
-###### 本项目采用的encoder-decoder结构, 模型还是比较大，如果上生产对硬件开销大，也可以优化encoder（比如cnn结构的mobilenet，resnet）或者decoder（roberta-tiny），然后对其进行蒸馏
-###### 如果此项目不能解决您的问题，请选择其他项目，不要因为此项目影响自己的心情！！！
+## 经验
+1) 如果收集的公章数据不足，需要生成虚拟公章并生成随机文字，保证对常用文字的识别能力
+2) 印章名（水平文字部分），存在多行情况，由于真实数据集的缺少，目前测试精度较低
+
 
