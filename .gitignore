@@ -27,3 +27,4 @@ app/
 models/
 .vs/
 
+/data/

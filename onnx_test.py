@@ -12,7 +12,7 @@ def read_vocab(path):
     """
     加载词典
     """
-    with open(path) as f:
+    with open(path, encoding="utf-8") as f:
         vocab = json.load(f)
     return vocab
 
@@ -97,8 +97,8 @@ class OnnxEncoderDecoder(object):
         mask = [1, ]
         scores = []
         for i in range(self.max_len):
-            input_ids = np.array([ids])
-            attention_mask = np.array([mask])
+            input_ids = np.array([ids]).astype('int64')
+            attention_mask = np.array([mask]).astype('int64')
             decoder_output = self.decoder(input_ids=input_ids,
                                           encoder_hidden_states=encoder_output,
                                           attention_mask=attention_mask
