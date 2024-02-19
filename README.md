@@ -8,8 +8,9 @@
 [trocr项目](https://github.com/microsoft/unilm/tree/master/trocr)<br>
 [trocr-chinese项目](https://github.com/chineseocr/trocr-chinese)
 
-## 更新点
-1. 推出新的识别模型，见下方分享的百度云链接，请注意该模型需要将输入图像resize为(320,320)
+## 近期更新点
+1. 推出数据集分享链接，包括互联网其他开源链接引用、自制数据集
+2. 推出新的识别模型，见下方分享的百度云链接，请注意该模型需要将输入图像resize为(320,320)
 
 ## 功能规划
 - [x]  发布标准公章端到端识别onnx模型
@@ -116,7 +117,7 @@ python onnx_test.py --model hand-write-onnx --test_img ./img/hand.png
 | 模型        | cer(字符错误率)           | acc(文本行)  | 下载地址  |训练数据来源 |训练耗时(GPU:3090) | 
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|
 | hand-write(中文手写)      |0.011 | 0.940 |[hand-write](https://pan.baidu.com/s/19f7iu9tLHkcT_zpi3UfqLQ)  密码: punl |[数据集地址](https://aistudio.baidu.com/aistudio/datasetdetail/102884/0) |8.5h(10epoch)|
-| seal-ocr(印章识别)      |0.009 | 0.923 |[seal](https://pan.baidu.com/s/1Q0Yo50gpbgpV8IKJyToCjQ?pwd=cV1I)|互联网络爬取，标签由付费api识别加人工验证|
+| seal-ocr(印章识别)      |0.009 | 0.923 |[seal](https://pan.baidu.com/s/1f4rB7dWyRHtDUoiczNf_fQ?pwd=e7l8)|互联网络爬取，标签由付费api识别加人工验证|
 | im2latex(数学公式识别)      |- | - |- |[im2latex](https://zenodo.org/record/56198#.YkniL25Bx_S) ||
 | TAL_OCR_TABLE(表格识别)     |- | - |- |[TAL_OCR_TABLE](https://ai.100tal.com/dataset) |
 | TAL_OCR_MATH(小学低年级算式数据集)|- | - |- | [TAL_OCR_MATH](https://ai.100tal.com/dataset) |
