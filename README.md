@@ -9,7 +9,7 @@
 [trocr-chinese项目](https://github.com/chineseocr/trocr-chinese)
 
 ## 近期更新点
-1. 推出数据集分享链接，包括互联网其他开源链接引用、自制数据集
+1. 推出[数据集分享页面](https://github.com/Gmgge/TrOCR-Seal-Recognition/blob/main/DataSet.md)，包括互联网其他开源链接引用、自制数据集
 2. 推出新的识别模型，见下方分享的百度云链接，请注意该模型需要将输入图像resize为(320,320)
 
 ## 功能规划
