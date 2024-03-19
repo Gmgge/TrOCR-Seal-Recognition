@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from transformers import Seq2SeqTrainer, Seq2SeqTrainingArguments
 from datasets import load_metric
 from tool.file_tool import get_image_file_list
-from tool.image_aug import image_aug
+from tool.image_aug import aug_sequential
 
 
 def compute_metrics(pred):
@@ -64,7 +64,7 @@ if __name__ == '__main__':
     vocab = processor.tokenizer.get_vocab()
     vocab_inp = {vocab[key]: key for key in vocab}
 
-    train_transformer = image_aug  # 训练集数据增强
+    train_transformer = aug_sequential  # 训练集数据增强
     train_dataset = trocrDataset(paths=train_paths, processor=processor, max_target_length=args.max_target_length,
                                  transformer=train_transformer)
     eval_transformer = lambda x: x  # 验证集数据增强 通常验证不做数据增强
