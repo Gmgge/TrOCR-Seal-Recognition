@@ -31,7 +31,7 @@ class trocrDataset(Dataset):
             image_file = self.paths[idx]
             txt_file = os.path.splitext(image_file)[0]+'.txt'
 
-            with open(txt_file) as f:
+            with open(txt_file, encoding='utf-8') as f:
                 text = f.read().strip().replace('xa0','')
                 if text.startswith('[') and text.endswith(']'):
                     ##list

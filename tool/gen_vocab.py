@@ -19,5 +19,5 @@ if __name__ == '__main__':
             vocab.update(txt)
     root_path = os.path.split(args.cust_vocab)[0]
     os.makedirs(root_path, exist_ok=True)
-    with open(args.cust_vocab, 'w') as f:
+    with open(args.cust_vocab, 'w', encoding='utf-8') as f:
         f.write('\n'.join(list(vocab)))
