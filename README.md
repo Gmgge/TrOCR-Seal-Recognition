@@ -11,7 +11,7 @@
 [trocr-chinese项目](https://github.com/chineseocr/trocr-chinese)
 
 ## 近期更新点
-- [x] 推出[数据集分享页面](https://github.com/Gmgge/TrOCR-Seal-Recognition/blob/main/DataSet.md)，包括互联网其他开源链接引用、自制数据集
+- [x] 推出[数据集分享页面](https://github.com/Gmgge/TrOCR-Seal-Recognition/blob/main/DataSet.md)，增加印章检测数据集
 - [ ] 推出超轻量印章检测项目，包含印章检测数据集、推荐检测算法、模型训练、onnx推理部署
 - [ ] 推出新的识别模型，见下方分享的百度云链接，请注意该模型需要将输入图像resize为(320,320)
 
