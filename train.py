@@ -84,7 +84,7 @@ if __name__ == '__main__':
     model.config.length_penalty = 2.0
     model.config.num_beams = 4
 
-    cer_metric = load_metric("./cer.py")
+    cer_metric = load_metric("./tool/cer.py")
 
     training_args = Seq2SeqTrainingArguments(
         predict_with_generate=True,

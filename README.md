@@ -45,7 +45,7 @@ c
 ```
 ```[python]
 python tool/gen_vocab.py \
-       --dataset_path "dataset/cust-data/0/" \
+       --dataset_path "dataset/cust-data/" \
        --cust_vocab ./cust-data/vocab.txt
 
 ```
@@ -99,7 +99,7 @@ python eval.py \
 ## 拷贝训练完成的pytorch_model.bin 到 ./cust-data/weights 目录下
 index = 2300 ##选择最好的或者最后一个step模型
 cp ./checkpoint/trocr-custdata/checkpoint-$index/pytorch_model.bin ./cust-data/weights
-python app.py --cust_data_init_weights_path ./cust-data/weights --test_img test/test.jpg
+python ./tool/app.py --cust_data_init_weights_path ./cust-data/weights --test_img test/test.jpg
 ```
 ## 转onnx 
 ```shell
