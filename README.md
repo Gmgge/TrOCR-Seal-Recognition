@@ -25,11 +25,10 @@
 1. 欢迎提供公章数据以提升模型，任何提供有效数据的都会被认为该项目贡献者，且可以定制化模型训练或者交流训练技巧
 2. 如果数据不方便分析，欢迎反馈识别错误的样例与数据模板，我会尝试生成虚拟数据
 
-## 环境编译
+## 环境安装
 ```
-docker build --network=host -t trocr-chinese:latest .
-docker run --gpus all -it -v /tmp/trocr-chinese:/trocr-chinese trocr-chinese:latest bash
-
+pip install -r requirements.txt
+pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu116
 ```
 ## 训练
 ### 初始化模型到自定义训练数据集
