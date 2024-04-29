@@ -50,9 +50,20 @@ python tool/gen_vocab.py \
 ```
 ### 初始化自定义数据集模型
 #### 下载预训练模型trocr模型权重
+下载weights并解压到当前目录
 链接: https://pan.baidu.com/s/1rARdfadQlQGKGHa3de82BA  密码: 0o65.  
 google driver: https://drive.google.com/drive/folders/1ibOVCHu33asiMUaFT9FzvhFNM4z25cJY?usp=share_link  
 ```
+# 根据字典生成模型配置
+python tool/init_custdata_model.py \   
+    --cust_vocab ./cust-data/vocab.txt \  
+    --pretrain_model ./weights \
+    --cust_data_init_weights_path ./cust-data/weights
+    
+# 将生成vocab.json 替换到./weights中
+cp ./cust-data/weights/vocab.json ./weights
+
+# 再次生成，获得正确的tokenizer.json
 python tool/init_custdata_model.py \   
     --cust_vocab ./cust-data/vocab.txt \  
     --pretrain_model ./weights \
@@ -70,8 +81,8 @@ python tool/init_custdata_model.py \
 dataset/cust-data/0/0.jpg
 dataset/cust-data/0/0.txt
 ...
-dataset/cust-data/100/10000.jpg
-dataset/cust-data/100/10000.txt
+dataset/cust-data/0/10000.jpg
+dataset/cust-data/0/10000.txt
 ```
 
 #### 训练模型
@@ -81,7 +92,7 @@ python train.py \
        --checkpoint_path ./checkpoint/trocr-custdata \
        --dataset_path "./dataset/cust-data/" \
        --per_device_train_batch_size 8 \
-       --CUDA_VISIBLE_DEVICES 1
+       --CUDA_VISIBLE_DEVICES 0
 ```
 
 #### 评估模型

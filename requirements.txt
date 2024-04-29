@@ -1,5 +1,5 @@
 datasets
-transformers==4.15.0
+transformers==4.29.2
 scikit-learn
 jiwer==2.3.0
 python-Levenshtein==0.12.2
