@@ -115,7 +115,7 @@ python ./tool/app.py --cust_data_init_weights_path ./cust-data/weights --test_im
 ```shell
 python -m \
     transformers.onnx \
-    hand-write \
+    --model hand-write \
     --feature=vision2seq-lm \
     hand-write-onnx --atol 1e-4
 
