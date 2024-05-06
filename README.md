@@ -79,11 +79,11 @@ python tool/init_custdata_model.py \
 ### 训练模型
 #### 数据准备,数据结构如下图所示
 ```
-dataset/cust-data/0/0.jpg
-dataset/cust-data/0/0.txt
+dataset/cust-data/0.jpg
+dataset/cust-data/0.txt
 ...
-dataset/cust-data/0/10000.jpg
-dataset/cust-data/0/10000.txt
+dataset/cust-data/10000.jpg
+dataset/cust-data/10000.txt
 ```
 
 #### 训练模型
