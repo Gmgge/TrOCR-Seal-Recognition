@@ -1,3 +1,4 @@
+accelerate
 datasets
 transformers==4.29.2
 scikit-learn
