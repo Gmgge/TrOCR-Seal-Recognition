@@ -97,7 +97,8 @@ if __name__ == '__main__':
         num_train_epochs=args.num_train_epochs,
         save_steps=args.eval_steps,
         eval_steps=args.eval_steps,
-        save_total_limit=5
+        save_total_limit=5,
+        learning_rate=4e-4
     )
 
     # seq2seq trainer
