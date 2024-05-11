@@ -115,9 +115,9 @@ python ./tool/app.py --cust_data_init_weights_path ./cust-data/weights --test_im
 ```shell
 python -m \
     transformers.onnx \
-    --model=hand-write \
+    --model={model_path} \
     --feature=vision2seq-lm \
-    hand-write-onnx --atol 1e-4
+    {save_path} --atol 1e-4
 
 cp hand-write/vocab.json hand-write-onnx/
 
