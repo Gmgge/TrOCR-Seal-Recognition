@@ -119,9 +119,9 @@ python -m \
     --feature=vision2seq-lm \
     {save_path} --atol 1e-4
 
-cp hand-write/vocab.json hand-write-onnx/
+cp ./cust-data/weights/vocab.json save_path/
 
-python onnx_test.py --model hand-write-onnx --test_img ./img/hand.png
+python onnx_test.py --model save_path --test_img ./img/seal_0.png
 
 ```
 
