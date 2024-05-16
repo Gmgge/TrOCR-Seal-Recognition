@@ -32,6 +32,18 @@ pip install -r requirements.txt
 pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu116
 ```
 ## 训练
+### 印章识别数据集构建
+```
+a.jpg  # 图像
+a.txt  # 标签
+```
+#### 标签格式
+![image](img/seal_2.png)
+
+该图像标签为：六安江淮电机有限公司#销售总公司 <br>
+备注：如果不需要水平文字，可以去除相应标签，本例中去除后的标签为：六安江淮电机有限公司
+
+
 ### 初始化模型到自定义训练数据集
 #### 字符集准备参考cust-data/vocab.txt
 ```
