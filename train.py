@@ -77,7 +77,7 @@ if __name__ == '__main__':
     model.config.pad_token_id = processor.tokenizer.pad_token_id
     model.config.vocab_size = model.config.decoder.vocab_size
     model.config.eos_token_id = processor.tokenizer.sep_token_id
-    model.config.max_length = args.max_target_lengt
+    model.config.max_length = args.max_target_length
     model.config.early_stopping = True
     model.config.no_repeat_ngram_size = 3
     model.config.length_penalty = 2.0
