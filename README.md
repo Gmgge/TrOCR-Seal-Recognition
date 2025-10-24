@@ -1,16 +1,13 @@
 # 基于参考项目的公章端到端识别
 
-**非常感谢[Jonsun-N](https://github.com/Jonsun-N) 共享印章真实数据2w左右，经过授权同意，我将在构建标签后开源该数据集，并据此重新训练模型**
+**非常感谢[Jonsun-N](https://github.com/Jonsun-N) 共享印章真实数据2w左右**
 
-**由于大家对数据集的强烈需求，已经在数据标签页面更新5000印章数据，印章识别标签尚未构建，有想要贡献标签的可以联系！**
+**推理部署或者体验尝试，可以参考我的项目 [ImageAnalysisService](https://github.com/Gmgge/ImageAnalysisService)** 
 
-**我会定期构建优化版本, 接受的反馈越多模型迭代越快，除去最优模型都会开源！**
-
-**推理部署或者体验尝试，可以参考我的项目 https://github.com/Gmgge/ImageAnalysisService**
-
-1. **由于真实数据缺失，如果在体验有中任何识别错误想要提升的，欢迎反馈！**
-2. **有真实印章数据想要贡献的，我这边有自动化工具可以生成标签，欢迎共享！**
-3. **任何提供有效数据的都会被认为该项目贡献者，可以定制化模型训练或者交流训练技巧**
+1. **由于真实数据缺失，你的实际测试效果不佳用自己的数据训练即可！**
+2. **文本识别模型，数据量非常重要**
+3. **新世界已经来临PaddleOCR-VL、MinerU、DeepSeek-OCR已经成为当前主流方案，算力充足情况下可以尝试一下大一统方案**
+4. **算力有限或者只是学习的小任务可以尝试该模型，端到端已经发展到识别大一统了还有小伙伴觉得端到端识别印章的思路不太行，我恢复了模型的公开可以下载尝试下，后面有时间还是会给项目更新一版花个句号**
 
 ## 1. 参考项目
 [trocr项目](https://github.com/microsoft/unilm/tree/master/trocr) <br>
@@ -148,7 +145,7 @@ python onnx_test.py --model save_path --test_img ./img/seal_0.png
 | 模型        | cer(字符错误率)           | acc(文本行)  | 下载地址  |训练数据来源 |训练耗时(GPU:3090) | 
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|
 | hand-write(中文手写)      |0.011 | 0.940 |[hand-write](https://pan.baidu.com/s/19f7iu9tLHkcT_zpi3UfqLQ)  密码: punl |[数据集地址](https://aistudio.baidu.com/aistudio/datasetdetail/102884/0) |8.5h(10epoch)|
-| seal-ocr(印章识别)      |0.009 | 0.923 |开源数据即可获取|互联网络爬取，标签由付费api识别加人工验证|
+| seal-ocr(印章识别)      |0.009 | 0.923 |[seal_pcr](https://pan.baidu.com/s/1zOVUg6RrH78gpvpWfyEYhw?pwd=TU6a)|互联网络爬取，标签由付费api识别加人工验证|
 | im2latex(数学公式识别)      |- | - |- |[im2latex](https://zenodo.org/record/56198#.YkniL25Bx_S) ||
 | TAL_OCR_TABLE(表格识别)     |- | - |- |[TAL_OCR_TABLE](https://ai.100tal.com/dataset) |
 | TAL_OCR_MATH(小学低年级算式数据集)|- | - |- | [TAL_OCR_MATH](https://ai.100tal.com/dataset) |
