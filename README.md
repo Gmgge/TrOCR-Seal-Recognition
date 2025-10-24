@@ -42,14 +42,14 @@ pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudio==0.13.1 --e
 100000.jpg
 100000.txt
 ```
-#### 4.2.1 签格式
+#### 4.2.1 标签格式
 ![image](img/seal_2.png)
 
 该图像标签为：六安江淮电机有限公司#销售总公司 <br>
 备注：如果不需要水平文字，可以去除相应标签，本例中去除后的标签为：六安江淮电机有限公司
 
 
-### 4.3 根据自定义训练数据集初生成字典
+### 4.3 根据自定义训练数据集生成字典
 
 #### 4.3.1 字典生成
 ```[python]
@@ -145,7 +145,7 @@ python onnx_test.py --model save_path --test_img ./img/seal_0.png
 | 模型        | cer(字符错误率)           | acc(文本行)  | 下载地址  |训练数据来源 |训练耗时(GPU:3090) | 
 | ------------- |:-------------:| -----:|-----:|-----:|-----:|
 | hand-write(中文手写)      |0.011 | 0.940 |[hand-write](https://pan.baidu.com/s/19f7iu9tLHkcT_zpi3UfqLQ)  密码: punl |[数据集地址](https://aistudio.baidu.com/aistudio/datasetdetail/102884/0) |8.5h(10epoch)|
-| seal-ocr(印章识别)      |0.009 | 0.923 |[seal_pcr](https://pan.baidu.com/s/1zOVUg6RrH78gpvpWfyEYhw?pwd=TU6a)|互联网络爬取，标签由付费api识别加人工验证|
+| seal-ocr(印章识别)      |0.009 | 0.923 |[seal-ocr](https://pan.baidu.com/s/1zOVUg6RrH78gpvpWfyEYhw?pwd=TU6a)|互联网络爬取，标签由付费api识别加人工验证|
 | im2latex(数学公式识别)      |- | - |- |[im2latex](https://zenodo.org/record/56198#.YkniL25Bx_S) ||
 | TAL_OCR_TABLE(表格识别)     |- | - |- |[TAL_OCR_TABLE](https://ai.100tal.com/dataset) |
 | TAL_OCR_MATH(小学低年级算式数据集)|- | - |- | [TAL_OCR_MATH](https://ai.100tal.com/dataset) |
